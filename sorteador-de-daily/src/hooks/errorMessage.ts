@@ -11,6 +11,12 @@ const useErrorMessage = (): ErrorMessageInterface => {
     const validateName = (name: string, collaborators: string[]) => {
         const isNameDuplicate = collaborators.includes(name);
         setIsDuplicate(isNameDuplicate);
+
+        if (isNameDuplicate) {
+            setTimeout(() => {
+                setIsDuplicate(false);
+            }, 5000);
+        };
     };
 
     return { isDuplicate, validateName };
