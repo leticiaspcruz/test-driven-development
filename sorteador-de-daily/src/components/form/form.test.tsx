@@ -36,7 +36,9 @@ test('duplicate names are not allowed', () => {
     
     userEvent.type(input, 'Letícia');
     fireEvent.click(button);
-    
+    userEvent.type(input, 'Letícia');
+    fireEvent.click(button);
+
     const errorMessage = screen.getByRole('alert');
     expect(errorMessage).toHaveTextContent('Nomes duplicados não são permitidos!');
 });
