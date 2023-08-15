@@ -1,9 +1,9 @@
-import shuffleCollaborators from '../utils/shuffleCollaborators';
+import shuffledCollaborators from '../utils/shuffleCollaborators';
 
 export const useShuffle = ( collaborators:  string[]) => {
-    const shuffledCollaborators = shuffleCollaborators(collaborators);
+    const shuffleCollaborators = shuffledCollaborators(collaborators);
 
-    return shuffledCollaborators;
+    return shuffleCollaborators;
 };
 
 export default useShuffle;

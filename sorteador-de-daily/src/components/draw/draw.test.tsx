@@ -1,22 +1,25 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Draw from './draw';
-import useCollaboratorsList from '../../hooks/collaboratorsList';
+import { useCollaboratorContext } from '../../context/collaboratorContext';
 
 const mockNavigate = jest.fn();
 
 jest.mock('react-router-dom', () => {
   return {
-    ...jest.requireActual('react-router-dom'),
     useNavigate: () => mockNavigate,
   };
 });
 
-jest.mock('../../hooks/collaboratorsList');
+jest.mock('../../context/collaboratorContext', () => {
+  return {
+    useCollaboratorContext: jest.fn(),
+  };
+});
 
 describe('test Draw component behavior', () => {
   test('collaborators are not enough to Draw', () => {
-    (useCollaboratorsList as jest.Mock).mockReturnValueOnce({ collaborators: [] });
+    (useCollaboratorContext as jest.Mock).mockReturnValue({ collaborators: [] });
 
     render(<Draw />);
 
@@ -26,7 +29,7 @@ describe('test Draw component behavior', () => {
 
   test('collaborators are enough to Draw', () => {
     const collaborators = ['Leticia', 'Argel', 'Vitor', 'Bruna', 'Alanis', 'Wiu'];
-    (useCollaboratorsList as jest.Mock).mockReturnValueOnce({ collaborators });
+    (useCollaboratorContext as jest.Mock).mockReturnValue({ collaborators });
 
     render(<Draw />);
 
@@ -36,7 +39,7 @@ describe('test Draw component behavior', () => {
 
   test('Draw was started', () => {
     const collaborators = ['Leticia', 'Argel', 'Vitor', 'Bruna', 'Alanis', 'Wiu'];
-    (useCollaboratorsList as jest.Mock).mockReturnValueOnce({ collaborators });
+    (useCollaboratorContext as jest.Mock).mockReturnValue({ collaborators });
 
     render(<Draw />);
 

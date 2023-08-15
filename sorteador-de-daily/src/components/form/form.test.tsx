@@ -2,10 +2,11 @@ import React from 'react';
 import { fireEvent, render, screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Form from './form';
+import { CollaboratorProvider } from '../../context/collaboratorContext';
 
 describe('test Form component behavior', () => {
     test('if input is empty new participants cannot be added', () => {
-        render(<Form />);
+        render(<CollaboratorProvider><Form/></CollaboratorProvider>);
         const input = screen.getByPlaceholderText('Insira os nomes dos colaboradores');
         const button = screen.getByRole('button');
     
@@ -14,7 +15,7 @@ describe('test Form component behavior', () => {
     });
     
     test('add collaborator when input is filled', () => {
-        render(<Form />);
+        render(<CollaboratorProvider><Form/></CollaboratorProvider>);
         const input = screen.getByPlaceholderText('Insira os nomes dos colaboradores');
         const button = screen.getByRole('button');
     
@@ -31,7 +32,7 @@ describe('test Form component behavior', () => {
     });
     
     test('duplicate names are not allowed', () => {
-        render(<Form />);
+        render(<CollaboratorProvider><Form/></CollaboratorProvider>);
         const input = screen.getByPlaceholderText('Insira os nomes dos colaboradores');
         const button = screen.getByRole('button');
         
@@ -46,7 +47,7 @@ describe('test Form component behavior', () => {
     
     test('the error message have to disappear after 5 seconds', () => {
         jest.useFakeTimers();
-        render(<Form />);
+        render(<CollaboratorProvider><Form/></CollaboratorProvider>);
         const input = screen.getByPlaceholderText('Insira os nomes dos colaboradores');
         const button = screen.getByRole('button');
         

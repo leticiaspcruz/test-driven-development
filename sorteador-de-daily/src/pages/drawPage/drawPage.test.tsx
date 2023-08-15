@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import DrawPage from './drawPage';
+import { CollaboratorProvider } from '../../context/collaboratorContext';
 
 const mockNavigate = jest.fn();
 
@@ -13,7 +14,7 @@ jest.mock('react-router-dom', () => {
 
 describe('test DrawPage', () => {
     test('render page correctly', () => {
-        const { container } = render(<DrawPage />);
+        const { container } = render(<CollaboratorProvider><DrawPage /></CollaboratorProvider>);
         expect(container).toMatchSnapshot();
     });
 });

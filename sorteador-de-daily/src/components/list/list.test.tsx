@@ -1,13 +1,13 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import List from './list';
-import useCollaboratorsList from '../../hooks/collaboratorsList';
+import { useCollaboratorContext } from '../../context/collaboratorContext';
 
-jest.mock('../../hooks/collaboratorsList');
+jest.mock('../../context/collaboratorContext');
 
 describe('test List component behavior', () => {
     test('the list must be empty', () => {
-        (useCollaboratorsList as jest.Mock).mockReturnValueOnce({ collaborators: [] });
+        (useCollaboratorContext as jest.Mock).mockReturnValue({ collaborators: [] });
 
         render(<List />);
 
@@ -17,7 +17,7 @@ describe('test List component behavior', () => {
 
     test('the list must be filled with the collaborators names', () => {
         const collaborators = ['Leticia', 'Argel', 'Vitor', 'Bruna', 'Alanis', 'Wiu'];
-        (useCollaboratorsList as jest.Mock).mockReturnValueOnce({ collaborators });
+        (useCollaboratorContext as jest.Mock).mockReturnValue({ collaborators });
 
         render(<List />);
 

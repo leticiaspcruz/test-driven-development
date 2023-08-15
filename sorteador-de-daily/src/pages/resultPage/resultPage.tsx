@@ -1,15 +1,15 @@
 import React from 'react';
-import useCollaboratorsList from '../../hooks/collaboratorsList';
-import useShuffle from '../../hooks/shuffle';
+import { useCollaboratorContext } from '../../context/collaboratorContext';
+import { useShuffle } from '../../hooks/shuffle';
 
 const ResultPage = () => {
-    const { collaborators } = useCollaboratorsList();
+    const { collaborators } = useCollaboratorContext();
 
     const shuffledCollaborators = useShuffle(collaborators);
 
     return (
         <section>
-             <ul>
+            <ul>
                 {shuffledCollaborators.map(collaborator => <li key={collaborator}>{collaborator}</li>)}
             </ul>
         </section>
