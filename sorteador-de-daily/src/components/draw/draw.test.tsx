@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import Raffle from './raffle';
+import Draw from './draw';
 import useCollaboratorsList from '../../hooks/collaboratorsList';
 
 const mockNavigate = jest.fn();
@@ -14,31 +14,31 @@ jest.mock('react-router-dom', () => {
 
 jest.mock('../../hooks/collaboratorsList');
 
-describe('test Raffle component behavior', () => {
-  test('collaborators are not enough to raffle', () => {
+describe('test Draw component behavior', () => {
+  test('collaborators are not enough to Draw', () => {
     (useCollaboratorsList as jest.Mock).mockReturnValueOnce({ collaborators: [] });
 
-    render(<Raffle />);
+    render(<Draw />);
 
     const button = screen.getByRole('button');
     expect(button).toBeDisabled();
   });
 
-  test('collaborators are enough to raffle', () => {
+  test('collaborators are enough to Draw', () => {
     const collaborators = ['Leticia', 'Argel', 'Vitor', 'Bruna', 'Alanis', 'Wiu'];
     (useCollaboratorsList as jest.Mock).mockReturnValueOnce({ collaborators });
 
-    render(<Raffle />);
+    render(<Draw />);
 
     const button = screen.getByRole('button');
     expect(button).not.toBeDisabled();
   });
 
-  test('raffle was started', () => {
+  test('Draw was started', () => {
     const collaborators = ['Leticia', 'Argel', 'Vitor', 'Bruna', 'Alanis', 'Wiu'];
     (useCollaboratorsList as jest.Mock).mockReturnValueOnce({ collaborators });
 
-    render(<Raffle />);
+    render(<Draw />);
 
     const button = screen.getByRole('button');
     fireEvent.click(button);

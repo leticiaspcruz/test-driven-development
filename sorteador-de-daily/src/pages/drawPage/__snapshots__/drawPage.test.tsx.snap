@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test RafflePage render page correctly 1`] = `
+exports[`test DrawPage render page correctly 1`] = `
 <div>
   <form>
     <input

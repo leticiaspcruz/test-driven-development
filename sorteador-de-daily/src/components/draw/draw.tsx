@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useCollaboratorsList from '../../hooks/collaboratorsList';
 
-const Raffle = () => {
+const Draw = () => {
 
     const { collaborators } = useCollaboratorsList();
     const navegate = useNavigate();
@@ -23,4 +23,4 @@ const Raffle = () => {
     )
 };
 
-export default Raffle;
+export default Draw;

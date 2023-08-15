@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import RafflePage from './rafflePage';
+import DrawPage from './drawPage';
 
 const mockNavigate = jest.fn();
 
@@ -11,9 +11,9 @@ jest.mock('react-router-dom', () => {
   };
 });
 
-describe('test RafflePage', () => {
+describe('test DrawPage', () => {
     test('render page correctly', () => {
-        const { container } = render(<RafflePage />);
+        const { container } = render(<DrawPage />);
         expect(container).toMatchSnapshot();
     });
 });
