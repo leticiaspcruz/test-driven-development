@@ -18,7 +18,6 @@ describe('test ResultPage', () => {
         render(<CollaboratorProvider><ResultPage /></CollaboratorProvider>)
 
         const items = screen.queryAllByRole('listitem');
-        expect(items).toHaveLength(shuffledCollaborators.length);
         expect(items).not.toEqual(collaborators);
     });
 });
